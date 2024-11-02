@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 2em;
+    gap: 0.5rem;
+
+}
+
+.basket {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1em 0 1em;
+    gap: 0.5rem;
+}
+
+.type {
+    width: 300px;
+    height: 100%;
+    border: 2px solid black;
+}
+
+.type-title {
+    text-align: center;
+    background-color: rgb(234, 234, 234);
+    padding: 10px
+}
+
+.type-data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 5px;
+}
+
+
+.card-style {
+    width: auto;
+    text-align: center;
+    color: black;
+    background-color: white;
+    padding: 0.75em 2em 0.75em 2em;
+    border: 2px solid black;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card-style:hover {
+    background-color: rgb(234, 234, 234);
+    transition: 0.3s;
+}
