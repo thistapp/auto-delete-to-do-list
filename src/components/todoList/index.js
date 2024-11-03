@@ -6,6 +6,7 @@ function Todo() {
     const [busketList, setBusketList] = useState();
     const [fruits, setFruits] = useState([]);
     const [vegetables, setVegetables] = useState([]);
+    const [timeouts, setTimeouts] = useState({})
 
     const dataConfig = [
         {
@@ -63,9 +64,14 @@ function Todo() {
         }
         setBusketList((prev) => prev.filter((i) => i.id !== data.id));
 
-        setTimeout(() => {
-            removeType(data)
-        }, 5000)
+        const timeoutId = setTimeout(() => {
+            removeType(data);
+        }, 5000);
+        
+        setTimeouts((prev) => ({
+            ...prev,
+            [data.id]: timeoutId,
+        }));
     }, [])
 
     const removeType = useCallback((data) => {
@@ -75,7 +81,18 @@ function Todo() {
         } else {
             setVegetables((prev) => prev.filter((i) => i.id !== data.id));
         }
-    }, [])
+
+        clearTimeout(timeouts[data.id]);
+        setTimeouts((prev) => {
+            const { [data.id]: _, ...rest } = prev;
+            return rest;
+        });
+    }, []);
+
+    const handleRemove = (data) => {
+        clearTimeout(timeouts[data.id]);
+        removeType(data)
+    }
 
     useEffect(() => {
         setBusketList(dataConfig)
@@ -91,10 +108,10 @@ function Todo() {
                 ))}
             </div>
             <div>
-                <ListComponents data={fruits} title={"Fruits"} handleChange={removeType} />
+                <ListComponents data={fruits} title={"Fruits"} handleChange={handleRemove} />
             </div>
             <div>
-                <ListComponents data={vegetables} title={"Vegetables"} handleChange={removeType} />
+                <ListComponents data={vegetables} title={"Vegetables"} handleChange={handleRemove} />
             </div>
         </div>
     );

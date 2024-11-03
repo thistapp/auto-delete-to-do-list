@@ -1,6 +1,6 @@
 import CardComponents from "../card";
 
-function ListComponents({ data, title,handleChange }) {
+function ListComponents({ data, title, handleChange }) {
 
     return (
         <div className="type">
