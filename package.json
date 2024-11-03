@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "auto-delete-to-do-list",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
